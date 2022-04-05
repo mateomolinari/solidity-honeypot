@@ -1,0 +1,7 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "hardhat-gas-reporter": "^1.0.8"
+  }
+}
