@@ -24,11 +24,13 @@ contract SimpleStorage {
     }
 
     function withdraw() public {
-        require(balances[msg.sender] >= 0.2 ether, "not enough balance");
-        logger.printLog(msg.sender);
+        address sender = msg.sender;
+        require(balances[sender] >= 0.2 ether, "not enough balance");
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, ) = msg.sender.call{value: balances[msg.sender]}("");
+        (bool success, ) = sender.call{value: balances[sender]}("");
         require(success, "failed to send ether");
-        balances[msg.sender] = 0;
+        balances[sender] = 0;
+        
+        logger.printLog(sender);
     }
 }
